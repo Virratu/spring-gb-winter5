@@ -20,7 +20,7 @@
 //    private String driverClassName;
 //    @Value("${url}")
 //    private String url;
-//    @Value("${username}")
+//    @Value("${usr}")
 //    private String username;
 //    @Value("${password}")
 //    private String password;

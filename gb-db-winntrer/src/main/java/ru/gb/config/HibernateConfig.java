@@ -27,7 +27,7 @@ public class HibernateConfig {
     private String driverClassName;
     @Value("${url}")
     private String url;
-    @Value("${username}")
+    @Value("${usr}")
     private String username;
     @Value("${password}")
     private String password;
@@ -35,7 +35,6 @@ public class HibernateConfig {
     @Bean
     public DataSource dataSource() {
         SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
-
         try {
             Class<? extends Driver> driver = (Class<? extends Driver>) Class.forName(driverClassName);
             dataSource.setDriverClass(driver);
