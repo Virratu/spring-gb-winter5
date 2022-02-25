@@ -64,6 +64,11 @@ public class SpringJdbcProductDao implements ProductDao {
     }
 
     @Override
+    public Product save(Product product){
+        return null;
+    }
+
+    @Override
     public void insert(Product product) {
 
     }
