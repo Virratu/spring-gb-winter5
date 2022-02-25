@@ -1,6 +1,7 @@
 package ru.gb.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +17,21 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/all")
-    public String showProductList(Model morel){
-        morel.addAttribute("products", productService.getAllProducts());
+    public String showProductList(Model morel, @RequestParam(name = "order",
+                                                            required = false,
+                                                            defaultValue = "") String sort){
+        switch (sort) {
+            case "asc":
+                morel.addAttribute("products",
+                        productService.getActiveProducts(Sort.by(Sort.Direction.ASC, "cost")));
+                break;
+            case "desc":
+                morel.addAttribute("products",
+                        productService.getActiveProducts(Sort.by(Sort.Direction.DESC, "cost")));
+                break;
+            default:
+                morel.addAttribute("products", productService.getActiveProducts());
+        }
         return "productList";
     }
 
@@ -48,7 +62,7 @@ public class ProductController {
 
     @RequestMapping(path = "/delete", method = RequestMethod.GET)
     public String deleteProduct(@RequestParam Long id) {
-        productService.deleteById(id);
+        productService.disableById(id);
         return "redirect:/products/all";
     }
 }
