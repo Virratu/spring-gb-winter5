@@ -9,7 +9,7 @@ import ru.gb.entity.Manufacturer;
 import javax.persistence.Transient;
 import java.util.Collections;
 
-@Repository
+//@Repository
 @RequiredArgsConstructor
 public class HibernateManufacturerDao implements ManufacturerDao {
 

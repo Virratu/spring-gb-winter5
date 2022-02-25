@@ -27,6 +27,11 @@ public class JdbcTemplateProductDao implements ProductDao {
     }
 
     @Override
+    public Product save(Product product){
+        return null;
+    }
+
+    @Override
     public void insert(Product product) {
 
     }

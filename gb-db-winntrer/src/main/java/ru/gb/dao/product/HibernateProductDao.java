@@ -8,7 +8,7 @@ import ru.gb.entity.Product;
 
 import java.util.Collections;
 
-@Repository
+//@Repository
 @RequiredArgsConstructor
 public class HibernateProductDao implements ProductDao {
 
@@ -32,6 +32,11 @@ public class HibernateProductDao implements ProductDao {
     public String findTitleById(Long id) {
         return (String) sessionFactory.getCurrentSession().getNamedQuery("Product.findTitleById")
                 .setParameter("id", id).uniqueResult();
+    }
+
+    @Override
+    public Product save(Product product){
+        return null;
     }
 
     @Override

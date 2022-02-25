@@ -14,7 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 
-@Component
+//@Component
 @RequiredArgsConstructor
 public class NamedParameterJdbcTemplateProductDao implements ProductDao {
 
@@ -47,6 +47,11 @@ public class NamedParameterJdbcTemplateProductDao implements ProductDao {
         HashMap<String, Object> namedParameters = new HashMap<>();
         namedParameters.put("productId", id);
         return namedParameterJdbcTemplate.queryForObject(sql, namedParameters, String.class);
+    }
+
+    @Override
+    public Product save(Product product){
+        return null;
     }
 
     @Override
